@@ -118,7 +118,7 @@ dove `XXXXXX`, `YYYYYY` e `ZZZZZZ` sono i numeri di matricola dei membri del gru
 All'interno della cartella devono essere presenti:
 
 - un file soluzione  
-  `sol_DatasetN_solver_XXXXXX_YYYYYY_ZZZZZZ.csv`  
+  `sol_DatasetN_solver_XXXXXX_YYYYYY_ZZZZZZ.csv`  solver_338874
   per ciascun `DatasetN`;
 
 - il solver  

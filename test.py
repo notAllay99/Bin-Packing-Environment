@@ -1,26 +1,34 @@
-from instances.instance import Instance
-# Importiamo ConstructiveSolver dalla cartella e dal file corretti
-from solver_338874.solver_000001 import ImprovementSolver
-from solver_338874.additional_script import ConstructiveSolver
-from concurrent.futures import ProcessPoolExecutor
 import time
-# Questo usa 4 processi separati, ognuno su un core diverso
-#with ProcessPoolExecutor(max_workers=4) as executor:
+
+from instances.instance import Instance
+from solver_338874.solver_338874 import solver_338874
+from solver_338874.additional_script import ConstructiveSolver, calculate_theoretical_lower_bounds
+
+
+if __name__ == '__main__':
+    t_start = time.time()
+
     # 1. Carica l'istanza
-t = time.time()
+    inst = Instance("DatasetA")
+    '''
+    bounds = calculate_theoretical_lower_bounds(inst.df_items, inst.df_vehicles)
 
-inst = Instance("DatasetA")
+    print(f"Il costo MINIMO teorico possibile è: {bounds['Absolute_Lower_Bound_Cost']}")
+    '''
+    print("Istanza caricata. Avvio solver costruttivo...")
+    
 
-# 2. Inizializza il risolutore che hai scritto in additional_script.py
-# 1. Costruisci la base
-costruttore = ConstructiveSolver(inst)
-costruttore.solve()
-
-# 2. Ottimizza
-imp = ImprovementSolver(inst)
-imp.solve_from_constructive(costruttore)
-# 3. La tua soluzione finale perfezionata ora si trova in:
-# ottimizzatore.sol
-end = time.time()
-imp.write_solution_to_file()
-print(end -t)
+    # 2. Inizializza ed esegui il Costruttivo
+    #costruttore = ConstructiveSolver(inst)
+    #starting_solution = costruttore.solve(return_detailed=False)
+    
+    #print("Costruttivo terminato. Avvio fase di miglioramento...")
+    #starting_solution.write_solution_to_file()
+    # 3. Inizializza l'ImprovementSolver (passando inst, come per il costruttore)
+    imp = solver_338874(inst)
+    imp.solve()
+    imp.write_solution_to_file()
+    
+    t_end = time.time()
+    print(f"Processo completato in {t_end - t_start:.2f} secondi.")
+    

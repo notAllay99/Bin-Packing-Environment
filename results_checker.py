@@ -4,8 +4,8 @@ from instances import Instance
 
 if __name__ == '__main__':
     dataset_name = 'DatasetA'
-    solver_name = 'ImprovedSolver_VND'
-    #solver_name = 'ConstructivePhase'
+    #solver_name = 'FullSolver_GRASP_VND_UltraFast'
+    solver_name = 'solver_338874_2'
     inst = Instance(dataset_name)
 
     # -------------------------

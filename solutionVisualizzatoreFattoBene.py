@@ -45,8 +45,8 @@ def create_container_wireframe(width, depth, height):
 # ---------------------------
 # CARICAMENTO DATI E CALCOLO TOTALI
 # ---------------------------
-dataset_name = 'Dataset0'
-solver_name = 'ImprovedSolver' 
+dataset_name = 'DatasetA'
+solver_name = 'solver_338874_2' 
 
 try:
     inst = Instance(dataset_name)
